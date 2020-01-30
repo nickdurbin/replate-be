@@ -4,8 +4,8 @@ exports.up = async function (knex) {
         table.increments("id")
         table.string("username", 280).notNullable().unique()
         table.string("password", 280).notNullable()
-        table.string("name", 280).notNullable()
-        table.integer("phone-number", 10).notNullable()
+        table.string("name", 280).null()
+        table.integer("phone-number", 10).null()
     })
 }
 
