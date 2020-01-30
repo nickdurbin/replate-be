@@ -3,9 +3,9 @@ exports.up = async function(knex) {
   await knex.schema.createTable("food-request", (table) => {
       table.increments("id")
       table.string("type", 280).notNullable
-      table.float("amount-servings", 280)
-      table.date("preferred pickup-date")
-      table.time("preferred pickup-time")
+      table.float("amount/servings", 280)
+      table.date("pickup date")
+      table.time("pickup time")
       table.string("description", 500)
       table.boolean('completed').defaultTo(false);
         table.integer("business_id")
