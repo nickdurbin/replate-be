@@ -4,7 +4,7 @@ const helmet = require('helmet');
 
 const authenticate = require("./middleware/authenticate")
 const businessRouter = require("./businesses/business-router")
-const foodRouter = require('./foodPickup/food-router')
+const foodRouter = require('./foodRequest/food-router')
 const volunteerRouter = require("./volunteers/volunteer-router")
 
 const server = express()
