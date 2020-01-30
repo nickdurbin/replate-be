@@ -1,7 +1,7 @@
 
 module.exports = {
     
-    jwtSecret: process.env.JWT_SECRET || "Build week is terrifying and exciting, all at the same time!",
+    jwtSecret: process.env.JWT_SECRET,
     options: {
         expiresIn: process.env.JWT_EXPIRATION || "12h"
     }
