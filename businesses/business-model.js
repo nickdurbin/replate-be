@@ -16,11 +16,30 @@ function findById(id) {
 }
 
 async function insert(user) {
-    return ()
+    const [id] = await db("business")
+    .insert(user)
+    .returning("id")
+    return findById(id)
 }
 
-function () {
-    return ()
+async function update(id, changes) {
+    await db("business")
+        .where({ id })
+        .update(changes)
+    return findById(id)
 }
 
+function remove(id) {
+    return db("business")
+        .where({ id })
+        .del()
+}
 
+module.exports = {
+    list, 
+    findBy,
+    findById,
+    insert,
+    update, 
+    remove,
+}
