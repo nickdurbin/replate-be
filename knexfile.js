@@ -8,6 +8,11 @@ module.exports = {
       filename: './dev.sqlite3'
     },
     useNullAsDefault: true,
+    pool: {
+      afterCreate: (conn, done) => {
+        conn.run('PRAGMA foreign_keys = ON', done);
+      },
+
     migrations: {
       directory: './database/migrations',
       tableName: 'dbmigrations',
@@ -18,7 +23,7 @@ module.exports = {
   testing: {
     client: 'sqlite3',
     connection: {
-      filename: './database/test.db3',
+      filename: './database/testing.db3',
     },
     useNullAsDefault: true,
     migrations: {
@@ -28,7 +33,7 @@ module.exports = {
       directory: './database/seeds',
     },
   },
-  
+
   staging: {
     client: 'postgresql',
     connection: {
@@ -60,4 +65,5 @@ module.exports = {
       tableName: 'knex_migrations'
     }
   },
-};
+ }
+}
