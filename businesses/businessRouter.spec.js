@@ -23,3 +23,14 @@ test("create business user route", async () => {
     expect(res.type).toBe("application/json")
     expect(res.body.username).toBe("lambda")
 })
+
+test("check login status", async () => {
+    const res = await supertest(server)
+        .post("/api/auth/login")
+        .send({ username: "lambda", password: "abc123" })
+    console.log(res)
+    expect(res.status).toBe(200)
+    expect(res.type).toBe("application/json")
+    expect(res.body).toBe(username, "lambda")
+
+})
