@@ -3,9 +3,22 @@ const BusinessModel = require("../businesses/business-model")
 const FoodModel = require("../foodRequest/food-model")
 const authenticate = require("../middleware/authenticate")
 const signToken = require("../businesses/business-token")
-const
 
 const router = require("express").Router()
+
+router.get("/", authenticate, authorizeUser("donator"), (req, res) => {
+    const requestOptions = {
+        headers: { accept: "application/json" },
+    }
+
+    axios.get("", requestOptions)
+        // .then(response => {
+        //     return res.status(200).json(response.data.results);
+        // })
+        // .catch(err => {
+        //     return res.status(500).json({ message: 'Error getting donations.', error: err });
+        // });
+})
 
 router.post("/register", async (req, res, next) => {
     try {
