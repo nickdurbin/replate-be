@@ -15,13 +15,13 @@ describe("volunteer model list", () => {
 describe("find user in volunteer model", () => {
     test("findById", async () => {
         const res = await VolunteerModel.findById(1)
-        expect(res.username).toBe("lambda")
+        expect(res.username).toBe("joseph")
     })
 
     test("update user", async () => {
-        await VolunteerModel.update(1, { username: "lambda4" })
+        await VolunteerModel.update(1, { username: "joseph4" })
         const user = await VolunteerModel.findById(1)
-        expect(user.username).toBe("lambda4")
+        expect(user.username).toBe("joseph4")
     })
 
     test("remove user", async () => {
