@@ -1,6 +1,7 @@
+const axios = require("axios")
+
 const bcrypt = require("bcryptjs")
 const BusinessModel = require("../businesses/business-model")
-const FoodModel = require("../foodRequest/food-model")
 const authenticate = require("../middleware/authenticate")
 const signToken = require("../businesses/business-token")
 
