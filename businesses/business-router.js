@@ -7,7 +7,7 @@ const signToken = require("../businesses/business-token")
 
 const router = require("express").Router()
 
-router.get("/", authenticate, authorizeUser("donator"), (req, res) => {
+router.get("/api/businesses", authenticate, authorizeUser("donator"), (req, res) => {
     const requestOptions = {
         headers: { accept: "application/json" },
     }
@@ -35,7 +35,7 @@ router.post("/login", async (req, res, next) => {
     try{
         const { username, password } = req.body
         
-        const user = await BusinessModel.findby({ username })
+        const user = await BusinessModel.findBy({ username })
         .first()
 
         if (user && bcrypt.compareSync(password, user.password)) {
