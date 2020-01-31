@@ -1,12 +1,11 @@
 const bcrypt = require("bcryptjs")
 const VolunteerModel = require("../volunteers/volunteer-model")
-const FoodModel = require("../foodRequest/food-model")
 const authenticate = require("../middleware/authenticate")
 const signToken = require("../volunteers/volunteer-token")
 
 const router = require("express").Router()
 
-router.get("/", authenticate, authorizeUser("volunteer"), (req, res) => {
+router.get("/api/volunteers", authenticate, authorizeUser("volunteer"), (req, res) => {
     const requestOptions = {
         headers: { accept: "application/json" },
     }
@@ -35,7 +34,7 @@ router.post("/login", async (req, res, next) => {
     try {
         const { username, password } = req.body
 
-        const user = await VolunteerModel.findby({ username })
+        const user = await VolunteerModel.findBy({ username })
             .first()
 
         if (user && bcrypt.compareSync(password, user.password)) {
