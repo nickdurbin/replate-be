@@ -15,10 +15,10 @@ server.use(express.json())
 
 require("dotenv").config()
 
-server.use("/api/businesses", businessRouter)
-server.use("/api/foodPickup", foodRouter)
-server.use("/api/volunteers", volunteerRouter)
 server.use("/api/businesses", authenticate, businessRouter)
+server.use("/api/foodPickup", foodRouter)
+server.use("/api/volunteers", authenticate, volunteerRouter)
+
 
 server.get("/", (req, res, next) => {
     return res.status(201).json({ message:" Welcome to Replate!" })
