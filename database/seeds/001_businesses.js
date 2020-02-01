@@ -1,9 +1,9 @@
 
 exports.seed = async (knex) => {
 
-  await knex("users").truncate()
+  await knex("business").truncate()
 
-  await knex("users").insert([
+  await knex("business").insert([
     { id: 1, username: 'joseph', password: "abc123", business_name: "Dunkin' Donuts", business_address:"5101 Bingle Rd. Houston, TX", phone: "(432)555-1234", email:"dd@texas.com" },
     { id: 2, username: 'sara', password: "abc123", business_name: "Panda Express", business_address: "1818 W. Northern Lights, Anchorage, AK", phone: "(907)555-1234", email: "pe@alaska.com" },
     { id: 3, username: 'chrisd', password: "abc123", business_name: "Olive Garden", business_address: "6000 Sepulveda Blvd, Culver City, CA", phone: "(310)555-1234", email: "og@california.com" },
