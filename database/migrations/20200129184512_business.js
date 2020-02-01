@@ -6,7 +6,7 @@ exports.up = async function(knex) {
       table.string("password", 280).notNullable()
       table.string("name", 280)
       table.string("address", 280)
-      table.integer("phone number", 10).unique()
+      table.integer("phone_number", 10).unique()
       table.string("email", 280)
   })
 };
