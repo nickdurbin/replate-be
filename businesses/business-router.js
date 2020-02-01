@@ -7,7 +7,7 @@ const signToken = require("../businesses/business-token")
 
 const router = require("express").Router()
 
-router.get("/api/businesses", authenticate, authorizeUser("donator"), (req, res) => {
+router.get("/", authenticate, authorizeUser("donator"), (req, res) => {
     const requestOptions = {
         headers: { accept: "application/json" },
     }
