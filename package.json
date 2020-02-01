@@ -1,0 +1,49 @@
+{
+  "name": "back-end",
+  "version": "1.0.0",
+  "description": "Back-end repo for replate2",
+  "main": "index.js",
+  "scripts": {
+    "server": "cross-env NODE_ENV=development nodemon index.js",
+    "test": "knex --env=testing migrate:latest && cross-env NODE_ENV=testing jest --verbose --watch",
+    "start": "node index.js",
+    "migrate-test": "knex --env=testing migrate:latest",
+    "migrate-dev": "knex --env=development migrate:latest"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BuildWeek-pt-Replate2/Back-end.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BuildWeek-pt-Replate2/Back-end/issues"
+  },
+  "homepage": "https://github.com/BuildWeek-pt-Replate2/Back-end#readme",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "bcryptjs": "^2.4.3",
+    "connect-session-knex": "^1.5.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "helmet": "^3.21.2",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.20.7",
+    "knex-cleaner": "^1.3.0",
+    "morgan": "^1.9.1",
+    "pg": "^7.18.1",
+    "sqlite3": "^4.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2",
+    "cross-env": "^6.0.3",
+    "jest": "^24.9.0",
+    "supertest": "^4.0.2"
+  }
+}
