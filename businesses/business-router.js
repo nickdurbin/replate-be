@@ -18,6 +18,63 @@ router.get("/", authenticate, async (req, res, next) => {
 
 })
 
+router.get("/", async (req, res, next) => {
+    try {
+        return res.json(await BusinessModel.find())
+    }
+    catch (err) {
+        next(err)
+    }
+})
+
+router.get("/:id", async (req, res, next) => {
+    try {
+        const { id } = req.params
+        const user = await BusinessModel.findById(id)
+
+        if (user) {
+            return res.status(200).json(user) //always included status(200) for successes.
+        } else {
+            return res.status(404).json({ message: "Could not find user with this Id." })
+        }
+
+    }
+    catch (err) {
+        next(err)
+    }
+})
+
+router.post("/", async (req, res, next) => {
+    try {
+        const id = await BusinessModel.add(req.body) //returns an array
+
+        const business = await BusinessModel.findById(id)
+
+        return res.status(201).json(business)
+    }
+    catch (err) {
+        next(err)
+    }
+})
+
+router.put("/:id", async (req, res, next) => {
+    try {
+        const { id } = req.params //returns an object
+        const business = await BusinessModel.update(req.body, id)
+
+        if (business) {
+            res.json(business)
+        } else {
+            return res.status(404).json({
+                message: "Could not find business with given ID",
+            })
+        }
+    } catch (err) {
+        next(err)
+    }
+})
+
+
 router.post("/register", async (req, res, next) => {
     try {
         const businessUser = await BusinessModel.insert(req.body)
@@ -53,6 +110,8 @@ router.post("/login", async (req, res, next) => {
     }
 })
 
+
+
 router.get("/protected", authenticate, async (req, res, next) => {
     try {
 
@@ -62,6 +121,17 @@ router.get("/protected", authenticate, async (req, res, next) => {
     }
 })
 
+router.delete("/:id", async (req, res, next) => {
+    try {
+        const { id } = await db("business")
+            .where({ id: req.params.id })
+            .del()
+        return res.status(200).json({ id: req.params.id })
+    }
+    catch (err) {
+        next(err)
+    }
+})
 
 function authorizeUser(role) {
     return function (req, res, next) {
