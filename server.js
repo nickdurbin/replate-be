@@ -17,7 +17,7 @@ require("dotenv").config()
 
 // add authtenticate afterwards to routers?
 server.use("/api/businesses", businessRouter)
-server.use("/api/foodPickup", foodRouter)
+server.use("/api/foodRequest", foodRouter)
 server.use("/api/volunteers", volunteerRouter)
 
 
