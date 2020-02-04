@@ -15,18 +15,19 @@ function findById(id) {
         .first()
 }
 
-async function insert(user) {
-    const [id] = await db("food-request")
+function insert(user) {
+    return db("food-request")
         .insert(user)
         .returning("id")
-    return findById(id)
+    //return findById(id)
 }
 
-async function update(id, changes) {
-    await db("food-request")
+function update(id, changes) {
+    return db("food-request")
         .where({ id })
         .update(changes)
-    return findById(id)
+        .returning("id")
+    //return findById(id)
 }
 
 function remove(id) {
