@@ -5,19 +5,21 @@ deployed Link is:
 - [Business](#business)
     - [Logs a Business User In](#logs-a-user-in)
     - [Registers a New Business User](#registers-a-new-business-user)
+    - [Edit Business Profile](#edit-business-profile)
+    - [Delete Business Profile](#delete-business-profile)
+    - [Add New Food Request for Business](#add-new-food-request-for-business)
+    - [Updates Food Request for Business based on provided Id](#updates-food-request-for-business-based-on-provided-id)
+    - [Deletes Food Request for Business based on provided Id](#deletes-food-request-for-business-based-on-provided-id)
 
-- [Food-Request](#food-request)
-    - [Deletes Food Request based on provided Id](#deletes-food-request-based-on-provided-id)
-    - [Returns all Food Requests](#returns-all-food-request)
-    - [Add New Food Request](#add-new-food-request)
-    - [Updates Food Request based on provided Id](#updates-food-request-based-on-provided-id)
-    
 - [Volunteers](#volunteers)
-    - [Updates the Current Logged In Volunteer](#updates-the-current-logged-in-volunteer)
-    - [Deletes the Current Logged In Volunteer](#deletes-the-current-logged-in-volunteer)
-    - [Retrieve all food-requests that the Current Volunteer is signed up for](#retrieve-all-classes-that-the-current-volunteer-is-signed-up-for)
-    - [Deletes the food request the Volunteer is signed up for](#deletes-the-food-request-the-Volunteer-is-signed-up-for)
-    
+    - [Logs a Volunteer User In](#logs-a-volunteer-user-in)
+    - [Registers a New Volunteer User](#registers-a-new-volunteer-user)
+    - [Updates the Volunteer profile](#updates-the-volunteer-profile)
+    - [Deletes the Volunteer profile](#deletes-the-volunteer-profile)    
+    - [View List of All Unassigned/Pending Food-Requests](#view-list-of-all-unassigned/pending-food-requests)
+    - [Click on Food Request to view more info](#click-on-food-request-to-view-more-info)
+    - [Accept and Complete Food Request](#accept-and-complete-food-request)
+    - [Cancel the food request the Volunteer is signed up for](#cancel-the-food-request-the-Volunteer-is-signed-up-for)
 
 
 # Business
