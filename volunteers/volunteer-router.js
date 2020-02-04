@@ -1,7 +1,7 @@
 const bcrypt = require("bcryptjs")
 const VolunteerModel = require("../volunteers/volunteer-model")
 const authenticate = require("../middleware/authenticate")
-const signToken = require("../volunteers/volunteer-token")
+const {signToken} = require("../volunteers/volunteer-token")
 
 const router = require("express").Router()
 
