@@ -15,9 +15,9 @@ server.use(express.json())
 
 require("dotenv").config()
 
-server.use("/api/businesses", authenticate, businessRouter)
+server.use("/api/businesses", businessRouter)
 server.use("/api/foodPickup", foodRouter)
-server.use("/api/volunteers", authenticate, volunteerRouter)
+server.use("/api/volunteers", volunteerRouter)
 
 
 server.get("/", (req, res, next) => {
