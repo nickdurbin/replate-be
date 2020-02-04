@@ -1,4 +1,5 @@
 const db = require("../database/dbConfig")
+const bcrypt = require("bcryptjs")
 
 function list() {
     return db("volunteer")
