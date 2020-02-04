@@ -7,6 +7,7 @@ deployed Link is:
     - [Registers a New Business User](#registers-a-new-business-user)
     - [Edit Business Profile](#edit-business-profile)
     - [Delete Business Profile](#delete-business-profile)
+    - [Create Food Request for Business to include: Type, Amount/Servings, Preferred Pick-up Time](#create-food-request-for-business-to-include-type-amount/servings-preferred-pickup-time)
     - [Add New Food Request for Business](#add-new-food-request-for-business)
     - [Updates Food Request for Business based on provided Id](#updates-food-request-for-business-based-on-provided-id)
     - [Deletes Food Request for Business based on provided Id](#deletes-food-request-for-business-based-on-provided-id)
@@ -19,7 +20,8 @@ deployed Link is:
     - [View List of All Unassigned/Pending Food-Requests](#view-list-of-all-unassigned/pending-food-requests)
     - [Click on Food Request to view more info](#click-on-food-request-to-view-more-info)
     - [Accept and Complete Food Request](#accept-and-complete-food-request)
-    - [Cancel the food request the Volunteer is signed up for](#cancel-the-food-request-the-Volunteer-is-signed-up-for)
+    - [Cancel the assigned food request the Volunteer is signed up for](#cancel-the-assigned-food-request-the-Volunteer-is-signed-up-for)
+    - [Mark assigned pickup as complete](#mark-assigned-pickup-as-complete)
 
 
 # Business
