@@ -16,6 +16,62 @@ router.get("/", authenticate, async (req, res, next) => {
     }
 })
 
+router.get("/", async (req, res, next) => {
+    try {
+        return res.json(await VolunteerModel.find())
+    }
+    catch (err) {
+        next(err)
+    }
+})
+
+router.get("/:id", async (req, res, next) => {
+    try {
+        const { id } = req.params
+        const volunteer = await VolunteerModel.findById(id)
+
+        if (volunteer) {
+            return res.status(200).json(volunteer)
+        } else {
+            return res.status(404).json({ message: "Could not find volunteer with this Id." })
+        }
+
+    }
+    catch (err) {
+        next(err)
+    }
+})
+
+router.post("/", async (req, res, next) => {
+    try {
+        const id = await VolunteerModel.add(req.body) //returns an array
+
+        const volunteer = await VolunteerModel.findById(id)
+
+        return res.status(201).json(volunteer)
+    }
+    catch (err) {
+        next(err)
+    }
+})
+
+router.put("/:id", async (req, res, next) => {
+    try {
+        const { id } = req.params //returns an object
+        const volunteers = await VolunteerModel.update(req.body, id)
+
+        if (volunteers) {
+             res.json(volunteers)
+        } else {
+            return res.status(404).json({
+                message: "Could not find volunteers with given ID",
+            })
+        }
+    } catch (err) {
+        next(err)
+    }
+})
+
 
 router.post("/register", async (req, res, next) => {
     try {
@@ -60,13 +116,24 @@ router.get("/protected", authenticate, async (req, res, next) => {
     }
 })
 
+router.delete("/:id", async (req, res, next) => {
+    try {
+        const { id } = await db("volunteer")
+            .where({ id: req.params.id })
+            .del()
+        return res.status(200).json({ id: req.params.id })
+    }
+    catch (err) {
+        next(err)
+    }
+})
 
 function authorizeUser(role) {
     return function (req, res, next) {
         if (req.token && role === req.token.role) {
             next()
         } else {
-            
+
             return res.status(403).json({ message: "You are not authorized." })
         }
     }
