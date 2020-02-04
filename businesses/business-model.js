@@ -3,7 +3,7 @@ const bcrypt = require("bcryptjs")
 
 function list() {
     return db("business")
-    .select("username", "name", "address", "phone", "email")
+    .select("name", "address", "phone", "email")
 }
 
 function findBy(filter) {
