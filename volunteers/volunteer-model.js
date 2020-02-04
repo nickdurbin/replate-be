@@ -2,6 +2,7 @@ const db = require("../database/dbConfig")
 
 function list() {
     return db("volunteer")
+    .select("name", "phone")
 }
 
 function findBy(filter) {
