@@ -8,6 +8,7 @@ const router = require("express").Router()
 router.get("/", authenticate, async (req, res, next) => {
     try {
         const volunteers = await VolunteerModel.list()
+
         return res.status(201).json(volunteers)
 
     } catch (err) {
@@ -19,6 +20,7 @@ router.get("/", authenticate, async (req, res, next) => {
 router.post("/register", async (req, res, next) => {
     try {
         const volunteerUser = await VolunteerModel.insert(req.body)
+
         return res.status(201).json(volunteerUser)
 
     } catch (err) {
@@ -52,6 +54,7 @@ router.post("/login", async (req, res, next) => {
 router.get("/protected", authenticate, async (req, res, next) => {
     try {
         return res.status(200).json({ message: "You are authorized.", })
+
     } catch (err) {
         next(err)
     }
@@ -63,8 +66,7 @@ function authorizeUser(role) {
         if (req.token && role === req.token.role) {
             next()
         } else {
-            console.log(req.token)
-            console.log(role)
+            
             return res.status(403).json({ message: "You are not authorized." })
         }
     }
