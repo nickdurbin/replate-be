@@ -1,15 +1,16 @@
 
 exports.up = async function (knex) {
-    await knex.schema.createTable("volunteer", (table) => {
+    await knex.schema.createTable("business", (table) => {
         table.increments("id")
         table.string("username", 280).notNullable().unique()
         table.string("password", 280).notNullable()
         table.string("name", 280)
-        table.integer("phone_number", 10)
+        table.string("address", 280)
+        table.string("phone", 13)
+        table.string("email", 280)
     })
-}
+};
 
 exports.down = async function (knex) {
-    await knex.schema.dropTableIfExists("volunteer")
-
-}
+    await knex.schema.dropTableIfExists("business")
+};
