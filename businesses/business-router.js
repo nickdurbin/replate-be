@@ -1,24 +1,20 @@
-const axios = require("axios")
 
 const bcrypt = require("bcryptjs")
 const BusinessModel = require("../businesses/business-model")
 const authenticate = require("../middleware/authenticate")
-const signToken = require("../businesses/business-token")
+const {signToken} = require("../businesses/business-token")
 
 const router = require("express").Router()
 
-router.get("/", authenticate, authorizeUser("donator"), (req, res) => {
-    const requestOptions = {
-        headers: { accept: "application/json" },
+router.get("/", authenticate, async (req, res, next) => {
+    try {
+        const businesses = await BusinessModel.list()
+        return res.status(201).json(businesses)
+
+    } catch (err) {
+        next(err)
     }
 
-    axios.get("", requestOptions)
-        // .then(response => {
-        //     return res.status(200).json(response.data.results);
-        // })
-        // .catch(err => {
-        //     return res.status(500).json({ message: 'Error getting donations.', error: err });
-        // });
 })
 
 router.post("/register", async (req, res, next) => {
@@ -37,8 +33,9 @@ router.post("/login", async (req, res, next) => {
         
         const user = await BusinessModel.findBy({ username })
         .first()
+        console.log(user)
 
-        if (user && bcrypt.compareSync(password, user.password)) {
+        if (user && bcrypt.compare(password, user.password)) {
             const token = signToken(user)
 
             return res.status(200).json({
