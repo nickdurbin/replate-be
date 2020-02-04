@@ -16,12 +16,12 @@ server.use(express.json())
 require("dotenv").config()
 
 server.use("/api/businesses", authenticate, businessRouter)
-server.use("/api/foodPickup", foodRouter)
+server.use("/api/foodRequest", foodRouter)
 server.use("/api/volunteers", authenticate, volunteerRouter)
 
 
 server.get("/", (req, res, next) => {
-    return res.status(201).json({ message:" Welcome to Replate!" })
+    return res.status(201).json({ message: "Welcome to Replate!" })
 })
 
 server.use((err, req, res, next) => {

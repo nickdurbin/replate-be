@@ -11,4 +11,4 @@ function signToken(businessUser) {
     return jwt.sign(payload, config.jwtSecret, config.options)
 }
 
-module.exports = signToken
+module.exports = { signToken }

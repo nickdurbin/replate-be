@@ -1,22 +1,18 @@
 const bcrypt = require("bcryptjs")
 const VolunteerModel = require("../volunteers/volunteer-model")
 const authenticate = require("../middleware/authenticate")
-const signToken = require("../volunteers/volunteer-token")
+const {signToken} = require("../volunteers/volunteer-token")
 
 const router = require("express").Router()
 
-router.get("/api/volunteers", authenticate, authorizeUser("volunteer"), (req, res) => {
-    const requestOptions = {
-        headers: { accept: "application/json" },
-    }
+router.get("/", authenticate, async (req, res, next) => {
+    try {
+        const volunteers = await VolunteerModel.list()
+        return res.status(201).json(volunteers)
 
-    axios.get("", requestOptions)
-    // .then(response => {
-    //     return res.status(200).json(response.data.results);
-    // })
-    // .catch(err => {
-    //     return res.status(500).json({ message: 'Error getting volunteers.', error: err });
-    // });
+    } catch (err) {
+        next(err)
+    }
 })
 
 
@@ -37,7 +33,7 @@ router.post("/login", async (req, res, next) => {
         const user = await VolunteerModel.findBy({ username })
             .first()
 
-        if (user && bcrypt.compareSync(password, user.password)) {
+        if (user && bcrypt.compare(password, user.password)) {
             const token = signToken(user)
 
             return res.status(200).json({

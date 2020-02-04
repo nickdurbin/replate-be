@@ -5,11 +5,10 @@ exports.up = async function (knex) {
         table.string("username", 280).notNullable().unique()
         table.string("password", 280).notNullable()
         table.string("name", 280)
-        table.integer("phone_number", 10)
+        table.string("phone", 13)
     })
 }
 
 exports.down = async function (knex) {
     await knex.schema.dropTableIfExists("volunteer")
-
-}
+};

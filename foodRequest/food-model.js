@@ -1,7 +1,8 @@
 const db = require("../database/dbConfig")
 
 function list() {
-    return db("food-request")
+    return db("food_request")
+    .select("type", "servings", "pickup_time", "description")
 }
 
 function findBy(filter) {
@@ -10,27 +11,28 @@ function findBy(filter) {
 }
 
 function findById(id) {
-    return db("food-request")
+    return db("food_request")
         .where({ id })
         .first()
 }
 
-async function insert(user) {
-    const [id] = await db("food-request")
+function insert(user) {
+    return db("food_request")
         .insert(user)
         .returning("id")
-    return findById(id)
+    //return findById(id)
 }
 
-async function update(id, changes) {
-    await db("food-request")
+function update(id, changes) {
+    return db("food_request")
         .where({ id })
         .update(changes)
-    return findById(id)
+        .returning("id")
+    //return findById(id)
 }
 
 function remove(id) {
-    return db("food-request")
+    return db("food_request")
         .where({ id })
         .del()
 }
