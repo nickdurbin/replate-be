@@ -9,7 +9,6 @@ function list() {
 function findBy(filter) {
     return db("volunteer")
         .where(filter)
-        //.select(id, request, completed, etc.)
 }
 
 function findById(id) {

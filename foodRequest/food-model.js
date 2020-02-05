@@ -15,20 +15,20 @@ function findById(id) {
         .where({ id })
         .first()
 }
-
-function insert(user) {
-    return db("food_request")
-        .insert(user)
+// food_request does not have a user. What would I call in as a parameter?
+async function insert(food_request) {
+    const [ id ] = await db("food_request")
+        .insert("food_request")
         .returning("id")
-    //return findById(id)
+        return findById(id)
 }
 
-function update(id, changes) {
-    return db("food_request")
+async function update(id, changes) {
+    await db("food_request")
         .where({ id })
         .update(changes)
         .returning("id")
-    //return findById(id)
+        return findById(id)
 }
 
 function remove(id) {
