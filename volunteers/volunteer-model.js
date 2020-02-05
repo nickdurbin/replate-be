@@ -18,20 +18,20 @@ function findById(id) {
         .first()
 }
 
-function insert(user) {
+async function insert(user) {
     user.password = bcrypt.hashSync(user.password, 12)
-    return db("volunteer")
+    const [ id ] = await db("volunteer")
         .insert(user)
         .returning("id")
-    //return findById(id)
+        return findById(id)
 }
 
-function update(id, changes) {
-    return db("volunteer")
+async function update(id, changes) {
+    await db("volunteer")
         .where({ id })
         .update(changes)
         .returning("id")
-    //return findById(id)
+        return findById(id)
 }
 
 function remove(id) {
