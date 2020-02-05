@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const localPg = {
   host: process.env.DB_HOST,
   database: process.env.DB_NAME,
@@ -12,7 +14,7 @@ module.exports = {
     client: 'sqlite3',
     useNullAsDefault: true,
     connection: {
-      filename: './database/dev.sqlite3'
+      filename: './database/dev.db3'
     },
     pool: {
       afterCreate: (conn, done) => {
@@ -30,7 +32,7 @@ module.exports = {
     client: 'sqlite3',
     useNullAsDefault: true,
     connection: {
-      filename: './database/test.sqlite3'
+      filename: './database/test.db3'
     },
     pool: {
       afterCreate: (conn, done) => {

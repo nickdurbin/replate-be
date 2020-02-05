@@ -2,7 +2,6 @@ const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 
-const authenticate = require("./middleware/authenticate")
 const businessRouter = require("./businesses/business-router")
 const foodRouter = require('./foodRequest/food-router')
 const volunteerRouter = require("./volunteers/volunteer-router")
@@ -15,9 +14,9 @@ server.use(express.json())
 
 require("dotenv").config()
 
-server.use("/api/businesses", authenticate, businessRouter)
+server.use("/api/businesses", businessRouter)
 server.use("/api/foodRequest", foodRouter)
-server.use("/api/volunteers", authenticate, volunteerRouter)
+server.use("/api/volunteers", volunteerRouter)
 
 
 server.get("/", (req, res, next) => {
