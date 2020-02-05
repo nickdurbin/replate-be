@@ -1,12 +1,7 @@
-exports.seed = function (knex) {
-
-  return knex("business")
-    .then(
-      function () {
-
-        return knex("business")
-
-          .insert([{
+exports.seed = async function (knex) {
+  await knex('business')
+          .insert([
+            {
               username: 'joseph',
               password: "$2a$10$zY9/yBf0MYWGGtiEZrFQ8ef1KYLFPAmguEk3tX2NWP1mBhdekcj8O",
               name: "Dunkin' Donuts",
@@ -88,6 +83,4 @@ exports.seed = function (knex) {
             },
 
           ])
-      }
-    )
 }
