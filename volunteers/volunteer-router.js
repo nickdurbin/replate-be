@@ -16,16 +16,7 @@ router.get("/", authenticate, async (req, res, next) => {
     }
 })
 
-router.get("/", async (req, res, next) => {
-    try {
-        return res.json(await VolunteerModel.findBy())
-    }
-    catch (err) {
-        next(err)
-    }
-})
-
-router.get("/:id", async (req, res, next) => {
+router.get("/:id", authenticate, async (req, res, next) => {
     try {
         const { id } = req.params
         const volunteer = await VolunteerModel.findById(id)
@@ -42,20 +33,7 @@ router.get("/:id", async (req, res, next) => {
     }
 })
 
-router.post("/", async (req, res, next) => {
-    try {
-        const id = await VolunteerModel.insert(req.body) //returns an array
-
-        const volunteer = await VolunteerModel.findById(id)
-
-        return res.status(201).json(volunteer)
-    }
-    catch (err) {
-        next(err)
-    }
-})
-
-router.put("/:id", async (req, res, next) => {
+router.put("/:id", authenticate, async (req, res, next) => {
     try {
         const { id } = req.params //returns an object
         const volunteers = await VolunteerModel.update(req.body, id)
@@ -72,12 +50,15 @@ router.put("/:id", async (req, res, next) => {
     }
 })
 
-
 router.post("/register", async (req, res, next) => {
     try {
         const volunteerUser = await VolunteerModel.insert(req.body)
+        const token = signToken(volunteerUser)
 
-        return res.status(201).json(volunteerUser)
+        return res.status(200).json({
+            token,
+            message: `Welcome ${volunteerUser.username}!`
+        })
 
     } catch (err) {
         next(err)
@@ -116,7 +97,7 @@ router.get("/protected", authenticate, async (req, res, next) => {
     }
 })
 
-router.delete("/:id", async (req, res, next) => {
+router.delete("/:id", authenticate, async (req, res, next) => {
     try {
         const { id } = await db("volunteer")
             .where({ id: req.params.id })
