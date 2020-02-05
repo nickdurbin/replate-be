@@ -55,7 +55,7 @@ Success-Response:
 ]
 
 {
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0IjoxLCJ1c2VybmFtZSI6Im5pY2siLCJyb2xlIjoiZG9uYXRvciIsImlhdCI6MTU4MDc3NjAzOCwiZXhwIjoxNTgwODE5MjM4fQ.CbH5g9LHqMFJ5iN4EhzX6GB8XKU_iVNx77RKBcWh_is",
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0IjoxLCJ1c2VybmFtZSI6Im5pY2siLCJyb2xlIjoiZG9uYXRvciIsImlhdCI6MTU4MDg2ODI4MSwiZXhwIjoxNTgxNDczMDgxfQ.Rxg7V9AsxWXXxGtpSQONvrTRwYrNm1H7-d7UosgC8bE",
   "message": "Welcome nick!"
 }
 
@@ -117,7 +117,7 @@ Success-Response:
 Success-Response:
 
 {
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0IjoxLCJ1c2VybmFtZSI6Im5pY2siLCJyb2xlIjoidm9sdW50ZWVyIiwiaWF0IjoxNTgwNzc4Mjc2LCJleHAiOjE1ODA4MjE0NzZ9.vlsUF8jVUrDpPI0RYqxMIOZF8SIp6iZS_UG4cUxQcoM",
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0IjoxLCJ1c2VybmFtZSI6Im5pY2siLCJyb2xlIjoidm9sdW50ZWVyIiwiaWF0IjoxNTgwODY4OTYzLCJleHAiOjE1ODE0NzM3NjN9.y6u3ZD1wCc_6MhpCDXVNRElpQYEpHeLHA-hvtriJoRQ",
   "message": "Welcome nick!"
 }
 
