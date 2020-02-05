@@ -18,46 +18,23 @@ router.get("/", authenticate, async (req, res, next) => {
 
 })
 
-router.get("/", async (req, res, next) => {
-    try {
-        return res.json(await BusinessModel.findBy())
-    }
-    catch (err) {
-        next(err)
-    }
-})
-
-router.get("/:id", async (req, res, next) => {
+router.get("/:id", authenticate, async (req, res, next) => {
     try {
         const { id } = req.params
-        const user = await BusinessModel.findById(id)
+        const profile = await BusinessModel.findById(id)
 
-        if (user) {
-            return res.status(200).json(user) //always included status(200) for successes.
+        if (profile) {
+            return res.status(200).json(profile) //always included status(200) for successes.
         } else {
-            return res.status(404).json({ message: "Could not find user with this Id." })
+            return res.status(404).json({ message: "Could not find profile with this Id." })
         }
-
     }
     catch (err) {
         next(err)
     }
 })
 
-router.post("/", async (req, res, next) => {
-    try {
-        const id = await BusinessModel.insert(req.body) //returns an array
-
-        const business = await BusinessModel.findById(id)
-
-        return res.status(201).json(business)
-    }
-    catch (err) {
-        next(err)
-    }
-})
-
-router.put("/:id", async (req, res, next) => {
+router.put("/:id", authenticate, async (req, res, next) => {
     try {
         const { id } = req.params //returns an object
         const business = await BusinessModel.update(req.body, id)
@@ -74,12 +51,15 @@ router.put("/:id", async (req, res, next) => {
     }
 })
 
-
 router.post("/register", async (req, res, next) => {
     try {
         const businessUser = await BusinessModel.insert(req.body)
+        const token = signToken(businessUser)
 
-        return res.status(201).json(businessUser)
+        return res.status(200).json({
+            token,
+            message: `Welcome ${businessUser.username}!`
+        })
 
     } catch (err) {
         next(err)
@@ -110,8 +90,6 @@ router.post("/login", async (req, res, next) => {
     }
 })
 
-
-
 router.get("/protected", authenticate, async (req, res, next) => {
     try {
 
@@ -121,7 +99,7 @@ router.get("/protected", authenticate, async (req, res, next) => {
     }
 })
 
-router.delete("/:id", async (req, res, next) => {
+router.delete("/:id", authenticate, async (req, res, next) => {
     try {
         const { id } = await db("business")
             .where({ id: req.params.id })
