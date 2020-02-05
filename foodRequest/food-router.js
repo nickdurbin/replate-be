@@ -13,7 +13,6 @@ router.get("/", async (req, res, next) => {
     }
 })
 
-
 router.get("/:id", async (req, res, next) => {
     try {
         const { id } = req.params
@@ -22,7 +21,7 @@ router.get("/:id", async (req, res, next) => {
         if (food_request) {
             return res.status(200).json(food_request)
         } else {
-            return res.status(404).json({ message: "Could not find food_request with this Id." })
+            return res.status(404).json({ message: "Could not find food request with this Id." })
         }
 
     }
@@ -30,7 +29,6 @@ router.get("/:id", async (req, res, next) => {
         next(err)
     }
 })
-
 
 router.post("/", async (req, res, next) => {
     try {
@@ -54,7 +52,7 @@ router.put("/:id", async (req, res, next) => {
             res.json(food_request)
         } else {
             return res.status(404).json({
-                message: "Could not find food_request with given ID",
+                message: "Could not find food request with given ID",
             })
         }
     } catch (err) {
