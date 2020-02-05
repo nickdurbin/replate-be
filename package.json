@@ -4,7 +4,7 @@
   "description": "Back-end repo for replate2",
   "main": "index.js",
   "scripts": {
-    "server": "cross-env NODE_ENV=development nodemon index.js",
+    "server": "nodemon index.js",
     "test": "knex --env=testing migrate:latest && cross-env NODE_ENV=testing jest --verbose --watch",
     "start": "node index.js",
     "migrate-test": "knex --env=testing migrate:latest",
@@ -43,7 +43,7 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.2",
-    "cross-env": "^7.0",
+    "cross-env": "^7.0.0",
     "jest": "^24.9.0",
     "supertest": "^4.0.2"
   }
