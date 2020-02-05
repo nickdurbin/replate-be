@@ -1,16 +1,16 @@
 const db = require("../database/dbConfig")
 const FoodModel = require("../foodRequest/food-model")
 
-beforeEach(async () => {
+beforeAll(async () => {
     await db.seed.run()
 })
 
-describe("food model list", () => {
-    test("list", async () => {
-        const res = await FoodModel.list()
-        expect(res).toBeGreaterThan[1]
-    })
-})
+// describe("food model list", () => {
+//     test("list", async () => {
+//         const res = await FoodModel.list()
+//         expect(res).toBeGreaterThan[1]
+//     })
+// })
 
 describe("find food request in model", () => {
     test("findById", async () => {
@@ -27,6 +27,6 @@ describe("find food request in model", () => {
     test("remove food request", async () => {
         await FoodModel.remove(1)
         const food = await FoodModel.list()
-        expect(food).toHaveLength(2)
+        expect(food).toHaveLength(0)
     })
 })

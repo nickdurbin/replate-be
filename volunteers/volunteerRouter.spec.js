@@ -2,7 +2,7 @@ const supertest = require("supertest")
 const server = require("../server")
 const db = require("../database/dbConfig")
 
-beforeEach(async () => {
+beforeAll(async () => {
     await db.seed.run()
 })
 
@@ -19,15 +19,15 @@ test("create volunteer user route", async () => {
         .post("/api/volunteers/register")
         .send({ username: "joseph", password: "abc123" })
 
-    expect(res.status).toBe(201)
+    expect(res.status).toBe(200)
     expect(res.type).toBe("application/json")
     expect(res.body.username).toBe("joseph")
 })
 
-test("check login status", async () => {
+test("check volunteer login status", async () => {
     const res = await supertest(server)
         .post("/api/auth/login")
-        .send({ username: "spetti" })
+        .send({ username: "joseph" })
 
     expect(res.status).toBe(200)
     expect(res.type).toBe("application/json")
