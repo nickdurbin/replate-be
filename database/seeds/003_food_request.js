@@ -49,7 +49,7 @@ exports.seed = function (knex) {
               description: "Describe food to be picked up.",
               completed: false,
               business_id: 9,
-              volunteer_id: 9
+              volunteer_id: 2
             },
             {
               type: "Bread",
