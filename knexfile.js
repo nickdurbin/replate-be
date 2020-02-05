@@ -14,7 +14,7 @@ module.exports = {
     client: 'sqlite3',
     useNullAsDefault: true,
     connection: {
-      filename: './database/dev.sqlite3'
+      filename: './database/dev.db3'
     },
     pool: {
       afterCreate: (conn, done) => {
@@ -32,7 +32,7 @@ module.exports = {
     client: 'sqlite3',
     useNullAsDefault: true,
     connection: {
-      filename: './database/test.sqlite3'
+      filename: './database/test.db3'
     },
     pool: {
       afterCreate: (conn, done) => {
