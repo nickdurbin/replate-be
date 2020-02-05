@@ -1,12 +1,7 @@
-exports.seed = function (knex) {
-
-  return knex("food_request")
-    .then(
-      function () {
-
-        return knex("food_request")
-
-          .insert([{
+exports.seed = async function (knex) {
+  await knex('food_request')
+          .insert([
+            {
               type: "Soup",
               servings: 22,
               pickup_time: 1581066814,
@@ -80,5 +75,3 @@ exports.seed = function (knex) {
             }
           ])
       }
-    )
-};
