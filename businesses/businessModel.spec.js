@@ -8,26 +8,26 @@ beforeEach(async () => {
 describe("business model list", () => {
     test ("list", async () => {
         const res = await BusinessModel.list()
-        expect(res).toBeGreaterThan[1]
+        expect(res).toBe("name", "address", "phone", "email")
     })
 })
 
 describe("find user in business model", () => {
     test("findById", async () => {
         const res = await BusinessModel.findById(1)
-        expect(res.username).toBe("lambda")
+        expect(res.username).toBe("joseph")
     })
 
-    test("update user", async () => {
-        await BusinessModel.update(1, { username: "lambda4" })
-        const user = await BusinessModel.findById(1)
-        expect(user.username).toBe("lambda4")
+    test("update business", async () => {
+        await BusinessModel.update(2, { name: "Jimmy Johns" })
+        const user = await BusinessModel.findById(2)
+        expect(user.name).toBe("Jimmy Johns")
     })
 
-    test("remove user", async () => {
+    test("remove business user", async () => {
         await BusinessModel.remove(1)
         const user = await BusinessModel.list()
-        expect(user).toHaveLength(2)
+        expect(user).toHaveLength(9)
         // console.log(user)
     })
 })
